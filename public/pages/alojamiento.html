@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle del Alojamiento - Booking MVP</title>
+    <link rel="stylesheet" href="../css/alojamiento.css">
+    <script src="../js/preload_alojamiento.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+<body>
+    <!-- <header>
+        <h1>Detalle del Alojamiento</h1>
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="login.html" id="nav-login">Login</a>
+            <a href="register.html" id="nav-register">Registro</a>
+            <a href="mis_reservas.html" id="nav-mis-reservas" style="display:none;">Mis Reservas</a>
+            <a href="#" id="nav-logout" style="display:none;">Cerrar Sesión</a>
+    </header> -->
+    <header class="header">
+        <div class="container header-content">
+            <div id="logo" class="logo">
+                <img src="../assets/logo-check-inn.png" alt="Check-inn" class="logo-image">
+            </div>
+            <nav class="nav-links">
+                <a href="register.html" class="nav-link" id="nav-register">Registra tu alojamiento</a>
+                <a href="login.html" class="nav-link" id="nav-login">Sing in / Sing up</a>
+                <a href="mis_reservas.html" class="nav-link" id="nav-mis-reservas">Mis Reservas</a>
+                <a href="#" class="nav-link" id="nav-logout">Cerrar Sesión</a>
+                <div class="currency-selector">
+                    <span>Ars</span>
+                    <img src="../assets/leng_sp_arg.png" alt="leng_icon" class="leng_icon"> </div>
+                <a href="#" class="nav-link">Help</a>
+            </nav>
+            <div class="hideloging">
+                <img id="avatar-img" src="../assets/pic/avatar0.png" alt="">
+                <p id="username"></p>
+            </div>
+            <div class="md-hidden">
+                <button class="mobile-menu-button">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <nav class="breadcrumb">
+            <span id="bc-inicio" class="bc-items">Inicio</span>
+            <span class="breadcrumb-separator"></span>
+            <span id="bc-tipo-aloj" class="bc-items"></span>
+            <span class="breadcrumb-separator"></span>
+            <span id="bc-pais-aloj" class="bc-items"></span>
+            <span class="breadcrumb-separator"></span>
+            <span id="bc-ciudad-aloj" class="bc-items"></span>
+            <span class="breadcrumb-separator"></span>
+            <span id="bc-nombre-aloj" class="breadcrumb-end">Habitaciones en </span>
+        </nav>
+        <div class="search-form-wrapper">
+            <div class="search-form-container">
+                <form class="search-form" id="search-form">
+                    <div class="form-group">
+                        <label for="destinations">Destino</label>
+                        <input id="destinationSelect" list="cityOptions" placeholder="A donde vas?" autofocus autocomplete="off"/>
+                        <datalist id="ciudad"></datalist>
+                    </div>
+                    <div class="form-group">
+                        <label for="checkin">Check-in</label>
+                        <input class="input-date-in" type="date" id="checkinInput">
+                    </div>
+                    <div class="form-group">
+                        <label for="checkout">Check-out</label>
+                        <input class="input-date-out" type="date" id="checkoutInput">
+                    </div>
+                    <div class="form-group">
+                        <label for="guestsDisplay">Huéspedes</label>
+                        <div id="guestsDisplay" class="custom-select">2 adultos, 0 menores, 1 habitación</div>
+                        <input type="hidden" id="adultsInput" value="2">
+                        <input type="hidden" id="childrenInput" value="0">
+                        <input type="hidden" id="roomsInput" value="1">
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="search-button">Buscar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+        
+        <div id="div-content">
+            <div id="subdiv-content">
+                
+            </div>
+        </div>     
+
+        <div class="search-form-wrapper">
+            <div class="search-form-container">
+                <form class="search-form">
+                    <div class="form-group">
+                        <label>Check in</label>
+                        <input class="input-date-in" id="modifCheckinInput" type="date">
+                    </div>
+                    <div class="form-group">
+                        <label>Check out</label>
+                        <input class="input-date-out" id="modifCheckoutInput" type="date">
+                    </div>
+                    <div class="form-group">
+                        <label for="modiGuestsDisplay">Huéspedes</label>
+                        <div id="modifGuestsDisplay" class="custom-select">2 Adultos, 0 Niños, 1 Habitaciones</div>
+                        <input type="hidden" id="modifAdultsInput" value="2">
+                        <input type="hidden" id="modifChildrenInput" value="0">
+                        <input type="hidden" id="modifRoomsInput" value="1">
+                    </div>                        
+                    <div class="form-group">
+                        <button type="submit" class="search-button">Buscar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+        <table class="tabla-habitaciones" id="tabla-habitaciones">
+            <thead>
+                <tr>
+                    <th class="th0" rowspan="2">Tipo de Habitación</th>
+                    <th class="th1">Cant. Huéspedes</th>
+                    <th class="th1">Precio por noche</th>
+                    <th class="th1">Tus opciones</th>
+                    <th class="th2">Elegir habitaciones</th>
+                    <th class="th3">Reservar</th>
+                </tr>
+            </thead>
+            <tbody id="tbody-habitaciones">                 
+                        
+            </tbody>
+        </table>    
+        
+        <h2 style="margin-top:2.5em;">Comentarios de los clientes</h2>
+        <div id="comentario-inferior"> </div>
+        <h2 style="margin-top:2.5em;">Normas de la Casa</h2>
+        <div style="background:#f3f4f6; border-radius:14px; border:1.5px solid #4c76b2; padding:1.2em 1.5em; margin-bottom:2em;">
+            <span style="font-weight:bold; font-size:0.98em;">Detalle de las Normas de la Casa (horarios check in y check out, horario desayuno, parking, etc)</span>
+        </div>
+
+
+        
+    </main>
+
+
+
+    <div id="guestsModal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="modal-close-button" id="closeModalBtn">&times;</span>
+            <h2>Seleccionar Huéspedes y Habitaciones</h2>
+            <div class="modal-input-group">
+                <label for="modalAdults">Adultos:</label>
+                <input type="number" id="modalAdults" class="modalAdults" value="2" min="1">
+            </div>
+            <div class="modal-input-group">
+                <label for="modalChildren">Menores:</label>
+                <input type="number" id="modalChildren" class="modalChildren" value="0" min="0">
+            </div>
+            <div class="modal-input-group">
+                <label for="modalRooms">Habitaciones:</label>
+                <input type="number" id="modalRooms" class="modalRooms" value="1" min="1">
+            </div>
+            <div class="modal-actions">
+                <button id="saveGuestsBtn">Guardar</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="login-overlay" id="loginModal">
+        <form id="login-form"> <!-- reutiliza el CSS del formulario de registro -->
+            <span class="modal-close-button-login" id="closeModalBtnLogin">&times;</span>
+            <div id="modal-cont-logo" class="logo">
+                <img src="../assets/logo-check-inn.png" alt="Check-inn" class="logo-image-modal">
+            </div>
+            <h2>Accede a tu cuenta</h2>
+            <div id="cont-messagge">
+                <div id="login-error-message" class="error-message" style="display: none;"></div>
+                <div id="login-success-message" class="success-message" style="display: none;"></div>
+            </div>
+
+            <div>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required />
+            </div>
+            <div>
+                <label for="password">Contraseña:</label>
+                <input type="password" id="password" name="password" required />
+            </div>
+
+            <button type="submit" class="btn" id="btn-login-modal">Ingresar</button>
+            <button type="button" onclick="location.href='../index.html'" id="btn-inicio-modal" class="btn-ax">Inicio</button>
+            <button type="button" onclick="location.href='register.html'" id="btn-register-modal" class="btn-ax">Crear cuenta</button>
+        </form>
+    </div>  
+    
+
+    
+    <footer>
+        <p>&copy; <span id="currentYear"></span> Booking MVP Latam. Todos los derechos reservados.</p>
+    </footer>
+    
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
+    <script src="../js/alojamiento_detalle.js" defer></script>
+    <script src="../js/login.js"></script>
+</body>
+</html>

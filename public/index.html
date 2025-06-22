@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check INN - Encuentra tu próximo destino</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/index.css">
+    <base href="/">
+    <script src="./js/preload.js"></script>
+</head>
+<body>
+
+    <header class="header">
+        <div class="container header-content">
+            <div class="logo">
+                <img src="assets/logo-check-inn.png" alt="Check-inn" class="logo-image">
+            </div>
+            <nav class="nav-links">
+                <a href="./pages/register.html" class="nav-link" id="nav-register">Registra tu alojamiento</a>
+                <a href="./pages/mis_reservas.html" class="nav-link" id="nav-mis-reservas">Mis Reservas</a>
+                <a href="../index.html" class="nav-link" id="nav-logout">Cerrar Sesión</a>
+                <a href="./pages/login.html" class="nav-link" id="nav-login">Sign in / Sign up</a>
+                <div class="currency-selector">
+                    <span>Ars</span>
+                    <img src="./assets/leng_sp_arg.png" alt="leng_icon" class="leng_icon"> </div>
+                <a href="#" class="nav-link">Help</a>
+            </nav>
+            <div class="hideloging">
+                <img id="avatar-img" src="./assets/pic/avatar0.png" alt="">
+                <p id="username"></p>
+            </div>
+            <div class="md-hidden">
+                <button class="mobile-menu-button">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero-background">
+        <div class="Box-hero-background">
+
+        </div>
+            <div class="container hero-content">
+                <h1 class="hero-title">Encuentra tu próximo destino</h1>
+                <p class="hero-subtitle">Accede a ofertas en alojamientos</p>
+            </div>
+            <div class="search-form-wrapper">
+                <div class="search-form-container">
+                    <form class="search-form" id="search-form">
+                        <div class="form-group">
+                            <label for="destinations">Destino</label>
+                            <input id="destinationSelect" list="cityOptions" placeholder="A donde vas?" autofocus autocomplete="off"/>
+                            <datalist id="ciudad"></datalist>
+                        </div>
+                        <div class="form-group">
+                            <label for="checkin">Check-in</label>
+                            <input type="date" id="checkin">
+                        </div>
+                        <div class="form-group">
+                            <label for="checkout">Check-out</label>
+                            <input type="date" id="checkout" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="guestsDisplay">Huéspedes</label>
+                            <div id="guestsDisplay" class="custom-select">2 adultos, 0 menores, 1 habitación</div>
+                            <input type="hidden" id="adultsInput" value="2">
+                            <input type="hidden" id="childrenInput" value="0">
+                            <input type="hidden" id="roomsInput" value="1">
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="search-button">Buscar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        
+    </section>
+
+    <section class="browse-section">
+        <div class="container">
+            <h2 class="browse-title">Busca por tipo de alojamiento</h2>
+            <div class="card-grid">
+                <div id="card-hotel" class="card-tipo">
+                    <img src="./assets/pic/menton-hd.jpg" alt="Hoteles" class="card-image">
+                    <div class="card-content">
+                        <h3 class="card-title">Hoteles</h3>
+                    </div>
+                </div>
+                <div id="card-apartamento" class="card-tipo">
+                    <img src="./assets/pic/dep.jpg" alt="Apartamentos" class="card-image">
+                    <div class="card-content">
+                        <h3 class="card-title">Apartamentos</h3>
+                    </div>
+                </div>
+                <div id="card-resort" class="card-tipo">
+                    <img src="./assets/pic/resort.jpg" alt="Resorts" class="card-image">
+                    <div class="card-content">
+                        <h3 class="card-title">Resorts</h3>
+                    </div>
+                </div>
+                <div id="card-villas" class="card-tipo">
+                    <img src="./assets/pic/villas.jpg" alt="Villas" class="card-image">
+                    <div class="card-content">
+                        <h3 class="card-title">Villas</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="search-results-section">
+        <div class="cont-result-filter">
+
+            <aside id="filters" class="filters-sidebar">
+                <h3>Filtrar</h3>
+                <div class="price-filter">
+                    <h4>Precio</h4>
+                    <input type="range" min="0" max="1000" value="500">
+                    <div class="price-range-display">$ 0 - $ 500</div>
+                </div>
+
+                <div class="rating-filter">
+                    <h4>Calificación</h4>
+                    <label><input type="radio" name="rating" value="excelente"> Excelente</label>
+                    <label><input type="radio" name="rating" value="muy-bueno"> Muy Bueno</label>
+                    <label><input type="radio" name="rating" value="bueno"> Bueno</label>
+                    <label><input type="radio" name="rating" value="aceptable"> Aceptable</label>
+                    <label><input type="radio" name="rating" value="aceptable"> Regular</label>
+                </div>
+
+                <div class="accommodation-type-filter">
+                    <h4>Tipo de alojamiento</h4>
+                    <label><input type="radio" name="accommodation-type" value="Hotel"> Hotel</label>
+                    <label><input type="radio" name="accommodation-type" value="Resorts"> Resorts</label>
+                    <label><input type="radio" name="accommodation-type" value="casa-huesped"> Casa de huéspedes</label>
+                    <label><input type="radio" name="accommodation-type" value="Aparthotel"> Aparthotel</label>
+                    <label><input type="radio" name="accommodation-type" value="Hostel"> Hostel</label>
+                    <label><input type="radio" name="accommodation-type" value="Apartamento"> Apartamento</label>
+                    <label><input type="radio" name="accommodation-type" value="Cabaña"> Cabaña</label>
+                    <label><input type="radio" name="accommodation-type" value="Villa"> Villa</label>
+                </div>
+            </aside>
+
+
+            <div class="container">
+                <h2 class="search-results-title">Resultados de tu búsqueda</h2>
+                <div id="searchResultsGrid" class="card-grid">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="guestsModal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="modal-close-button" id="closeModalBtn">&times;</span>
+            <h2>Seleccionar Huéspedes y Habitaciones</h2>
+            <div class="modal-input-group">
+                <label for="modalAdults">Adultos:</label>
+                <input type="number" id="modalAdults" value="2" min="1">
+            </div>
+            <div class="modal-input-group">
+                <label for="modalChildren">Menores:</label>
+                <input type="number" id="modalChildren" value="0" min="0">
+            </div>
+            <div class="modal-input-group">
+                <label for="modalRooms">Habitaciones:</label>
+                <input type="number" id="modalRooms" value="1" min="1">
+            </div>
+            <div class="modal-actions">
+                <button id="saveGuestsBtn">Guardar</button>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; <span id="currentYear"></span> Booking MVP Latam. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
+    <script src="./js/search.js" defer></script>
+    <!-- <script src="../js/catalogo.js"></script> -->
+</body>
+</html>
