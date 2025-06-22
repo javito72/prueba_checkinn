@@ -83,7 +83,7 @@ Reserva.create = async (nuevaReserva) => {
   
         console.log('reservas', reservas)
   
-        if ((Number(reservasSuperpuestas.length) + Number(cantidadBuscada)) > Number(habitacionesExistentes.length)) {
+        if ((Number(reservasSuperpuestas.length) + Number(cantidadBuscada)) > Number(habitacionesExistentes)) { // CORREGIDO: habitacionesExistentes es un número
           await connection.rollback(); // Deshacer transacción
           connection.release();
           throw new Error('El alojamiento no está disponible para las fechas seleccionadas.');

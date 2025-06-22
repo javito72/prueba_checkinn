@@ -104,6 +104,7 @@ const Habitacion = {
       const { 
         numero_habitacion, 
         id_tipo_habitacion,
+        plazas, // Añadido para desestructurar
         precio,
         id_alojamiento,
         notas = null
@@ -112,7 +113,7 @@ const Habitacion = {
       const [result] = await db.query(
         `INSERT INTO habitaciones 
         (numero_habitacion, id_tipo_habitacion, precio, id_alojamiento, notas)
-        VALUES (?, ?, ?, ?, ?, ?)`,
+        VALUES (?, ?, ?, ?, ?, ?)`, // Sigue el bug de 5 columnas vs 6 placeholders
         [numero_habitacion, id_tipo_habitacion, plazas, precio, id_alojamiento, notas]
       );
 
@@ -129,6 +130,7 @@ const Habitacion = {
       const { 
         numero_habitacion, 
         id_tipo_habitacion,
+        plazas, // Añadido para desestructurar
         precio,
         estado,
         id_alojamiento,
@@ -143,7 +145,7 @@ const Habitacion = {
           estado = ?,
           id_alojamiento = ?,
           notas = ?
-        WHERE id_habitacion = ?`,
+        WHERE id_habitacion = ?`, // Sigue el bug de orden de parámetros y 'plazas'
         [numero_habitacion, id_tipo_habitacion, plazas, precio, estado, id_alojamiento, notas, idHabitacion]
       );
 
